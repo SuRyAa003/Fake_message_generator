@@ -1,0 +1,303 @@
+<div class="container-fluid p-3">
+
+    <div class="row">
+    
+        <!-- Left Side Area -->
+        <div class="col-md-4">
+            <div class="card shadow-sm rounded-5">
+                <div class="card-body">
+
+                    <ul class="nav nav-underline " id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" 
+                            aria-controls="pills-home" aria-selected="true">
+                            <i class="bi bi-phone-fill"></i>  Phone Settings
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-message-tab" data-bs-toggle="pill" data-bs-target="#pills-message" type="button" role="tab" 
+                            aria-controls="pills-message" aria-selected="false">
+                                <i class="bi bi-pencil-fill"></i> Messages 
+                            </button>
+                        </li>
+                    </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <!-- Platform Area -->
+                                        <div class="">
+                                            <pre class="fw-semibold text-secondary my-2">Platform</pre>
+                                            <button class="btn btn-outline-primary" id="pills-apple-tab" data-bs-toggle="pill" data-bs-target="#pills-apple-tab" type="button" role="tab" aria-controls="pills-apple-tab" aria-selected="true">
+                                                <i class="bi bi-android"></i> Android
+                                            </button>
+                                        </div>
+
+                                        <!-- Appearance Area -->
+                                        <!-- <div class="">
+                                            <pre class="fw-semibold text-secondary my-2">Appearance</pre>
+                                            <ul class=" bg-secondary-subtle nav nav-pills nav-fill gap-2 p-1 small  rounded-4 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active rounded-4" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">
+                                                        iMessage (Blue)
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link rounded-4" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">
+                                                        Text Message (Green)
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div> -->
+
+                                        <!-- Status Bar Area -->
+                                        <div class="">
+                                            <pre class="fw-semibold text-secondary my-2">Status Bar</pre>
+                                            <div class=" p-3 rounded-2" style="background: rgb(249, 250, 251)">
+
+                                                <form  [formGroup]="androidForm" (ngSubmit)="submitData()">
+
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="me-2">
+                                                            <label for="">Time</label>
+                                                            <div class="input-group">
+                                                                <!-- <span class="input-group-text" id="basic-addon1"><i class="bi bi-clock"></i></span> -->
+                                                                <input type="time" class="form-control" formControlName="anTime" aria-describedby="basic-addon1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            <label for="">Battery %</label>
+                                                            <div class="input-group">
+                                                                <span class="input-group-text" id="basic-addon2"><i class="bi bi-battery-full"></i></span>
+                                                                <input type="number" min="1" max="100" class="form-control" formControlName="anBattery" aria-describedby="basic-addon2">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="my-3">
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" formControlName="anShowBatt" type="checkbox" role="switch" id="switchCheckChecked">
+                                                            <label class="form-check-label" for="switchCheckChecked">Show Battery %</label>
+                                                        </div>
+                                                        <div class="d-flex my-2">
+
+                                                            <div class="form-check form-switch me-2">
+                                                                <input class="form-check-input" formControlName="anIsCharging" type="checkbox" role="switch" id="switchForCharging">
+                                                                <label class="form-check-label" for="switchForCharging">Charging</label>
+                                                            </div>
+    
+                                                            <div class="form-check form-switch ">
+                                                                <input class="form-check-input" formControlName="anIsOnline" type="checkbox" role="switch" id="switchForOnline">
+                                                                <label class="form-check-label" for="switchForOnline">Show Online</label>
+                                                            </div>
+                                                        </div>
+    
+
+                                                    </div>
+                                                    
+
+                                                    <!--  -->
+                                                    <div class="">
+
+                                                        <label for="">Connection</label>
+                                                        <div class="input-group mb-3">
+
+                                                            <span class="input-group-text" id="basic-addon3"><i class="bi bi-bar-chart-fill"></i></span>
+                                                            <select  formControlName="anConnection"class="form-select form-select-sm rounded-end" aria-describedby="basic-addon3">
+                                                                 @for (item of connectionsList;track item.value){
+                                                                     <option [value]="item?.viewValue">{{item?.viewValue}}</option>
+                                                                 }
+                                                            </select>
+                                                        </div>
+
+                                                        
+                                                    </div>
+
+
+                                                </form>
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Contact Info Area -->
+                                        <div class="">
+                                            <pre class="fw-semibold text-secondary my-2">Contact Info</pre>
+                                            <div class=" p-3 rounded-2" style="background: rgb(249, 250, 251)">
+
+                                                <form action="" [formGroup]="androidForm">
+
+                                                    <div class="">
+                                                        <div class="">
+                                                            <label for="">Name</label>
+                                                            <input type="text" formControlName="anContactName" class="form-control">
+                                                        </div>
+                                                        <div class="">
+                                                            <label for="">Last seen</label>
+                                                            <input type="text" formControlName="anContactStatus" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="pills-message" role="tabpanel" aria-labelledby="pills-message-tab" tabindex="0">...</div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    
+        <!-- Right Side Area -->
+        <div class="col-md-8">
+            <div class="card shadow-sm rounded-5 icon-demo">
+                <div class="card-body">
+
+                    <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-apple-tab" role="tabpanel" aria-labelledby="pills-apple-platform-tab" tabindex="0">
+                                    <div class="border border-2 rounded-5 bg-white" style="height: 36rem;">
+                                        <div class="container-fluid ">
+                                            <div class="row">
+                                                <div class="col-md-1"></div>
+                                                <!-- Fake Messager view Area -->
+                                                <div class="col-md-5  p-2">
+                                                    <div class="border border-secondary border-5 " style="height: 35rem;border-radius: 20px;">
+
+                                                        <div class="container-fluid">
+                                                            <!-- Top area -->
+                                                            <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                <span class="fs_12">{{androidForm?.value?.anTime}} {{getCurrentHours >=12 ? 'PM':'AM' }}   </span>
+                                                                            </div>
+                                                                            <div class="col-md-3 d-flex align-items-center justify-content-center" >
+                                                                                <i class="bi bi-circle-fill"></i>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="d-flex align-items-center justify-content-between">
+                                                                                    <span class="fs_12">{{androidForm?.value?.anConnection}}</span>
+
+                                                                                    @if(androidForm?.value?.anConnection === 'WiFi'){
+                                                                                        <i class="bi bi-wifi"></i>
+                                                                                    }
+                                                                                    @else{
+                                                                                        <i class="bi bi-reception-4"></i>
+                                                                                    }
+                                                                                    
+                                                                                    @if(androidForm?.value?.anShowBatt){
+                                                                                        <span class="fs_12">{{androidForm?.value?.anBattery}}%</span>
+                                                                                    }
+
+                                                                                    @if(androidForm?.value?.anIsCharging === false){
+                                                                                        <i [class]="showChargingPercentage()"></i>
+                                                                                    }
+                                                                                    @else{
+                                                                                        <i class="bi bi-battery-charging text-success fs_20"></i>
+                                                                                    }
+
+                                                                                </div>
+
+                                                                            </div>
+                                                            </div>           
+
+                                                            <!-- Contact info Area -->
+                                                            <div class="row p-2" style="background-color: #3C806A;">
+                                                                <div class="col-md-1 fs_20 p-0">
+                                                                    <i class="bi bi-arrow-left text-white"></i>
+                                                                </div>
+                                                                <div class="col-md-2 px-2">
+                                                                    <div style="width: 2rem;height: 1.9rem;" class="border bg-secondary rounded-5 overflow-hidden flex items-center justify-center text-white text-sm relative">
+                                                                        <span class="fs-6 text-center lh-2 text-white" style="padding-left: 6px;">
+                                                                            {{getFirstAndLastName()}}
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-5 px-1">
+                                                                    <p class="mb-0 fs_16 text-white">
+                                                                        <span>{{androidForm?.value?.anContactName}}</span>
+                                                                    </p>
+                                                                    @if(androidForm?.value?.anIsOnline === true){
+                                                                        <small class="text-secondary fs_12 text-white">Online</small>
+                                                                    } @else{
+                                                                        <small class="text-secondary fs_12 text-white">{{androidForm?.value?.anContactStatus}}</small>
+                                                                    }
+
+                                                                </div>
+                                                                <div class="col-md-1 px-1">
+                                                                    <i class="bi bi-camera-video-fill text-white"></i>
+                                                                </div>
+                                                                <div class="col-md-1 px-3">
+                                                                    <i class="bi bi-telephone-fill text-white"></i>
+                                                                </div>
+                                                                <div class="col-md-1 px-3">
+                                                                    <i class="bi bi-three-dots-vertical text-white"></i>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- View Message Area -->
+                                                            <div class="row whatsapp-bg" style="height: 24.3rem;">
+                                                                <div class="col-md-3"></div>
+                                                                <div class="col-md-3"></div>
+                                                                <div class="col-md-3"></div>
+                                                                <div class="col-md-3"></div>
+                                                            </div>
+
+                                                            <!-- Send input Message Area -->
+                                                            <div class="row align-items-center">
+                                                                <div class="col-md-1"><i class="bi bi-emoji-grin-fill"></i></div>
+                                                                <div class="col-md-7 px-2">
+                                                                    <input type="text" name="" placeholder="Message"  class="form-control form-control-sm">
+                                                                </div>
+                                                                <div class="col-md-2 px-1">
+                                                                    <i class="bi bi-paperclip me-2"></i>
+                                                                    <i class="bi bi-card-image "></i>
+                                                                </div>
+                                                                <div class="col-md-2 ps-0 pe-2">
+                                                                    <button type="button" class="btn btn-success rounded-circle"><i class="bi bi-mic-fill"></i></button>
+                                                                    
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Phone navigation area -->
+                                                            <div class="" style="background: #F0F2F5;">
+                                                                <div class="row">
+                                                                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                                                        <p><i class="bi bi-square"></i></p>
+                                                                    </div>
+                                                                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                                                        <p><i class="bi bi-circle"></i></p>
+                                                                    </div>
+                                                                    <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                                                        <p><i class="bi bi-chevron-left"></i></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+    
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                          
+                                <!-- <div class="tab-pane fade show" id="pills-android-tab" role="tabpanel" aria-labelledby="pills-android-tab" tabindex="0">
+                                    <h1>Android phone Modal</h1>
+                                </div> -->
+                          
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
